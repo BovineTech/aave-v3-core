@@ -30,7 +30,10 @@
     "ci:clean": "rm -rf ./artifacts ./cache ./types ./temp-artifacts",
     "prepare": "husky install",
     "build": "tsc --project lib.tsconfig.json",
-    "prepublish": "npm run compile && npm run build"
+    "prepublish": "npm run compile && npm run build",
+    "deploy:market:aave:fork": "set FORK=main&&set MARKET_NAME=Aave&&npm run deploy",
+    "deploy:market:eth:empty:fork": "set FORK=main&&set MARKET_NAME=Ethereum&&npm run deploy",
+    "deploy": "npm run compile && npx hardhat deploy --no-compile"
   },
   "devDependencies": {
     "@aave/deploy-v3": "1.56.1",

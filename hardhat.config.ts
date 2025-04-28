@@ -5,6 +5,9 @@ import { accounts } from './test-wallets.js';
 import { COVERAGE_CHAINID, HARDHAT_CHAINID } from './helpers/constants';
 import { buildForkConfig } from './helper-hardhat-config';
 
+import { getCommonNetworkConfig } from './deployHelpers/hardhat-config-helpers';
+import { eEthereumNetwork } from './deployHelpers/types';
+
 require('dotenv').config();
 
 import '@nomicfoundation/hardhat-toolbox';
@@ -74,6 +77,8 @@ const hardhatConfig = {
         balance,
       })),
     },
+    main: getCommonNetworkConfig(eEthereumNetwork.main, 1),
+    [eEthereumNetwork.sepolia]: getCommonNetworkConfig(eEthereumNetwork.sepolia, 11155111),
     ganache: {
       url: 'http://ganache:8545',
       accounts: {
